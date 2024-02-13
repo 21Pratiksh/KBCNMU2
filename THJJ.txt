@@ -1,0 +1,128 @@
+#include<iostream.h>
+#include<conio.h>
+class HEAP
+{
+		int n, A[200];
+	public:
+		HEAP(int);
+		void INSERT(int);
+		void SET_ELE();
+		void GET_ELE();
+}
+HEAP::HEAP(int par)
+{
+	n=par;
+}
+void HEAP::INSERT(int no)
+{
+	int j =no;
+	int i=no/2;
+	int item = A[no]; //new ele to be added in exhi. heap
+	while(i>0 && A[i] < item) //not a root && parent < new ele
+	{
+		A[j] = A[i]; //shift the parent down
+		j = i;  // move the pair of ptrs up
+		i= i/2;
+	}
+	A[j]=item;
+}
+
+
+
+void HEAP::GET_ELE()
+{
+	cout<<endl;
+	for(int i=1;i<=n;i++)
+		cout<<A[i]<<" ";
+}
+void HEAP::SET_ELE()
+{
+	cout<<endl<<"Enter elements is:\n ";
+	for(int i=1;i<=n;i++)
+		cin>>A[i];
+}
+void main()
+{
+	clrscr();
+	int n;
+	cout<<"Enter Total Numbers of elements:\n";
+	cin>>n;
+	HEAP obj(n);
+	obj.SET_ELE();
+	for(int i=2;i<=n;i++)
+		obj.INSERT(i);
+	cout<<endl<<"Heap elements are : ";
+	obj.GET_ELE();
+	getch();
+}
+
+
+
+
+
+
+
+
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<time.h>
+class heap
+{
+private:
+int a[1000],n;
+public:
+void getdata();
+void insert();
+void disp();
+};
+void heap::getdata()
+{
+ cout<<"\n...Program for Min Heap Insert...\n\n";
+ cout<<"Enter the Size := " ;
+ cin>>n;
+ for(int i=1;i<=n;i++)
+ {
+ a[i]=random(20000);
+ }
+}
+void heap::insert()
+{
+ for(int j=1;j<=n;j++)
+ {
+ int i=j;
+ int item=a[i];
+ while((i>1) && (a[i/2] > item))
+ {
+a[i]=a[i/2];
+i=i/2;
+ }
+ a[i]=item;
+ }
+}
+void heap::disp()
+{
+for(int i=1;i<=n;i++)
+{
+if(i%8==0)
+cout<<"\n";
+cout<<a[i]<<"\t";
+}
+}
+void main()
+{
+clrscr();
+clock_t e,s;
+heap h;
+h.getdata();
+12
+cout<<"\n\n Befor Insert :: ";
+h.disp();
+s=clock();
+h.insert();
+e=clock();
+cout<<"\n\n After Insert ::\n";
+h.disp();
+cout<<"\n\nThe Time Complexity is ::"<<((e-s)/CLK_TCK);
+getch();
+}
